@@ -1,16 +1,31 @@
 import 'reflect-metadata';
 
-import { ProductController } from './adapter/restful/v1/controller/OrderController';
+import { OrderController } from './adapter/restful/v1/controller/OrderController';
 import { AppDataSource } from './infraestructure/mysql/data-source';
 import { container } from './ioc/inversify.config';
 import { TYPES } from './ioc/Types';
-import { PresenterImpl } from './presenter/PresenterImpl';
+import { validateTokenFromEvent } from './utils/jwt-validator';
 
 // Variables globales para reutilización entre invocaciones
 let isDataSourceInitialized = false;
-let controller: ProductController;
+let controller: OrderController;
 
 export const handler = async (event: any) => {
+  const validation = validateTokenFromEvent(event);
+
+  if (!validation.valid) {
+    return {
+      statusCode: 401,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: 'Unauthorized',
+        error: validation.error,
+      }),
+    };
+  }
+
   console.log('event', event);
   try {
     // Inicializar DataSource solo una vez (reutilización de contenedor)

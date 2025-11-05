@@ -43,9 +43,11 @@
    },
    "dependencies": {
       "@types/axios": "^0.14.4",
+      "@types/jsonwebtoken": "^9.0.10",
       "axios": "^1.12.2",
       "globals": "^16.4.0",
       "inversify": "^7.10.3",
+      "jsonwebtoken": "^9.0.2",
       "mysql2": "^3.15.3",
       "reflect-metadata": "^0.2.2",
       "typeorm": "^0.3.27"
