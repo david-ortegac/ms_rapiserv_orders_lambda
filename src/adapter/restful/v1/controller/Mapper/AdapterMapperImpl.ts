@@ -46,29 +46,13 @@ export class AdapterMapperImpl implements IAdapterMapper {
   toDomainProduct(adapterEntity: AdapterProductEntity): DomainProductEntity {
     return {
       id: adapterEntity.id,
-      name: adapterEntity.nombre,
-      description: adapterEntity.descripcion,
-      price: adapterEntity.precio,
-      category: adapterEntity.categoria,
-      subCategory: adapterEntity.subcategoria,
-      createdAt: adapterEntity.fechaCreacion,
-      updatedAt: adapterEntity.fechaActualizacion,
-      createdBy: adapterEntity.creadoPor,
-      updatedBy: adapterEntity.actualizadoPor,
+      quantity: adapterEntity.cantidad,
     };
   }
   toAdapterProduct(domainEntity: DomainProductEntity): AdapterProductEntity {
     return {
       id: domainEntity.id,
-      nombre: domainEntity.name,
-      descripcion: domainEntity.description,
-      precio: domainEntity.price,
-      categoria: domainEntity.category,
-      subcategoria: domainEntity.subCategory,
-      fechaCreacion: domainEntity.createdAt,
-      fechaActualizacion: domainEntity.updatedAt,
-      creadoPor: domainEntity.createdBy,
-      actualizadoPor: domainEntity.updatedBy,
+      cantidad: domainEntity.quantity,
     };
   }
 

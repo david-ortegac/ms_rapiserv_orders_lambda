@@ -45,26 +45,14 @@ export class InfraestructureMapperImpl implements IInfraestructureMapper {
   toDomainProduct(entity: Product): DomainProductEntity {
     return {
       id: entity.id,
-      name: entity.productName,
-      description: entity.productDescription,
-      price: entity.productPrice,
-      category: entity.productCategory,
-      subCategory: entity.subCategory,
-      createdAt: entity.createdAt,
-      updatedAt: entity.updatedAt,
-      createdBy: entity.createdBy,
-      updatedBy: entity.updatedBy,
+      quantity: entity.quantity,
     };
   }
 
   toEntityProduct(domain: DomainProductEntity): Product {
     return {
       id: domain.id,
-      productName: domain.name,
-      productDescription: domain.description,
-      productPrice: domain.price,
-      productCategory: domain.category,
-      subCategory: domain.subCategory,
+      quantity: domain.quantity,
     } as Product;
   }
 

@@ -1,6 +1,6 @@
 import { inject, injectable } from 'inversify';
 
-import { OrderService } from '../../../../application/services/IOrderService';
+import { IOrderService } from '../../../../application/services/IOrderService';
 import { TYPES } from '../../../../ioc/Types';
 import { AdapterOrderEntity } from './Entity/AdapterOrderEntity';
 import { IAdapterMapper } from './Mapper/IAdapterMapper';
@@ -10,7 +10,7 @@ import { OrderController } from './OrderController';
 export class OrderControllerImpl implements OrderController {
   constructor(
     @inject(TYPES.OrderService)
-    private readonly orderService: OrderService,
+    private readonly orderService: IOrderService,
     @inject(TYPES.IAdapterMapper) private readonly mapper: IAdapterMapper
   ) {}
 
